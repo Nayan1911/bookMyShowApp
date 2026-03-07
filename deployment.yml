@@ -2,10 +2,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: bms-app
-  labels:
-    app: bms
 spec:
-  replicas: 1
+  replicas: 1  # IMPORTANT: Use 1, not 2
   selector:
     matchLabels:
       app: bms
@@ -16,6 +14,13 @@ spec:
     spec:
       containers:
       - name: bms-container
-        image: sharmanayan/bms:latest  # Replace with your Docker image
+        image: sharmanayan/bms:latest
+        resources:
+          requests:
+            memory: "128Mi"
+            cpu: "100m"
+          limits:
+            memory: "256Mi"
+            cpu: "200m"
         ports:
-        - containerPort: 3000  # Replace with the port your app runs on
+        - containerPort: 3000
