@@ -12,6 +12,9 @@ spec:
       labels:
         app: bms
     spec:
+      tolerations:
+      - operator: "Exists"
+
       containers:
       - name: bms-container
         image: sharmanayan/bms:latest
