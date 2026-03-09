@@ -9,6 +9,7 @@ COPY package.json package-lock.json ./
 
 # Force install a compatible PostCSS version to fix the issue
 RUN npm install postcss@8.4.21 postcss-safe-parser@6.0.0 --legacy-peer-deps
+RUN npm install chokidar
 
 # Install dependencies
 RUN npm install
